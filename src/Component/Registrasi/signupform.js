@@ -29,8 +29,50 @@ class signupform extends Component {
     this.state = {
       selectedGender: "key0",
       selectedDokter: "key0",
+      selectedRS: "key0",
       activeTab : 'Pasien',
+      nama : '',
+      username : '',
+      password : '',
+      email : '',
+      dokter :[],
+      rs:[],
     };
+  }
+
+   getDataDokter() {
+       fetch('http://dev.infinite-creative.com/sispak_api/Dokter/', {
+       method: 'GET',
+       headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    // 'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0.F5-b8XNvMzFcE7uyYTQwX_HaQBpADkO1epAdiqJ45EI'
+                  }
+        })
+        .then((response) => response.json())
+        .then((response) => {
+               this.setState({dokter : response.data});
+        }).done();
+  }
+
+  getDataRumahSakit() {
+       fetch('http://dev.infinite-creative.com/sispak_api/Rumahsakit/', {
+       method: 'GET',
+       headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                  }
+        })
+        .then((response) => response.json())
+        .then((response) => {
+               this.setState({rs : response.data});
+        }).done();
+  }
+
+
+  componentDidMount(){
+    this.getDataDokter();
+    this.getDataRumahSakit();
   }
 
 //Setting Picker Jenis Kelamin
@@ -47,44 +89,118 @@ class signupform extends Component {
     });
   }
 
+  onValueRS(value: string) {
+    this.setState({
+      selectedRS: value
+    });
+  }
+
   onTabPress (val) {
     this.setState({
       activeTab : val
     });
   }
 
-    _renderCancel() {
+  handleRegister(){
+          if (this.state.activeTab == 'Pasien') {
+              fetch('http://dev.infinite-creative.com/sispak_api/Pasien/insert', {
+                 method: 'POST',
+                 headers: {
+                              'Accept': 'application/json',
+                              'Content-Type': 'application/json',
+                            },
+                  // body : 
+                  body: JSON.stringify({
+                        nama: this.state.nama,
+                        username: this.state.username,
+                        email: this.state.email,
+                        password: this.state.password,
+                        gender : this.state.selectedGender,
+                        id_dokter : this.state.selectedDokter,
+                        tanggal_lahir : this.state.date,
+                       })
+                  })
+                  .then((response) => response.json())
+                  .then((response) => {
+                          
+                           if (response.status) {
+                             alert("Berhasil tambah pasien");
+                          }else{
+                            alert("Gagal Login");
+                          }
+                         // this.setState({success : response.success});
+
+                  }).done();
+          }else{
+                fetch('http://dev.infinite-creative.com/sispak_api/Dokter/insert', {
+                 method: 'POST',
+                 headers: {
+                              'Accept': 'application/json',
+                              'Content-Type': 'application/json',
+                            },
+                  // body : 
+                  body: JSON.stringify({
+                        nama: this.state.nama,
+                        username: this.state.username,
+                        email: this.state.email,
+                        password: this.state.password,
+                        id_rumahsakit : this.state.selectedRS,
+                       })
+                  })
+                  .then((response) => response.json())
+                  .then((response) => {
+                          
+                          if (response.status) {
+                             alert("Berhasil tambah dokter");
+                          }else{
+                            alert("Gagal Login");
+                          }
+                         // this.setState({success : response.success});
+
+                  }).done();
+          }
+
+  }
+   
+
+    _renderFormReg() {
         if (this.state.activeTab == 'Pasien') {
+            let comboDokter = this.state.dokter.map(function(data, index){
+                        return (
+                             <Item key={index} label={data.nama} value={data.id_dokter} />
+                      )
+                  
+                  });
+
             return (
                   <Form style={styles.formLogin}>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Nama' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({nama:text})} placeholder='Nama' placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Username' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({username:text})} placeholder='Username' placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Email' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({email:text})} placeholder='Email' placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Password' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({password:text})} placeholder='Password' secureTextEntry={true} placeholderTextColor='white'/>
                         </Item>
                         <Picker style={styles.st_kelamin} mode="dropdown" selectedValue={this.state.selectedGender} onValueChange={this.onValueGender.bind(this)}>
                           <Item label="Jenis Kelamin" value="key0" />
-                          <Item label="Laki-Laki" value="key1" />
-                          <Item label="Wanita" value="key2" />
+                          <Item label="Laki-Laki" value="l" />
+                          <Item label="Wanita" value="p" />
                         </Picker>
                         <Picker style={styles.st_dokter} mode="dropdown" selectedValue={this.state.selectedDokter} onValueChange={this.onValueDokter.bind(this)}>
                           <Item label="Pilih Dokter" value="key0" />
-                          <Item label="Dr. Rizky Setyonovanto" value="key1" />
-                          <Item label="Dr. Agum Laksono" value="key2" />
+                          {comboDokter}
                         </Picker>
                         <DatePicker
                             style={styles.st_datepck}
                             date={this.state.date}
                             mode="date"
-                            placeholder="Select Date"
-                            format="DD-MM-YYYY"
+                            placeholder="Tanggal Lahir"
+                            format="YYYY-MM-DD"
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
                             onDateChange={(date) => {this.setState({date: date})}}
@@ -92,28 +208,31 @@ class signupform extends Component {
                   </Form>
             );
         } else {
+               let comboRumahSakit = this.state.rs.map(function(data, index){
+                        return (
+                             <Item key={index} label={data.nama} value={data.id} />
+                      )
+                  
+                  });
             return (
                 <Form style={styles.formLogin}>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Nama Dokter' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({nama:text})} placeholder='Nama Dokter' placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Username' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({username:text})} placeholder='Username' placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Email' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({email:text})} placeholder='Email' placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Password' placeholderTextColor='white'/>
+                          <Input style={styles.st_inputfnt} onChangeText={(text) => this.setState({password:text})} placeholder='Password' secureTextEntry={true} placeholderTextColor='white'/>
                         </Item>
                         <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Rumah Sakit' placeholderTextColor='white'/>
-                        </Item>
-                        <Item>
-                          <Input style={styles.st_inputfnt}placeholder='Alamat Rumah Sakit' placeholderTextColor='white'/>
-                        </Item>
-                        <Item>
-                          <Input style={styles.st_inputfnt} placeholder='Nomor Telp Rumah Sakit' placeholderTextColor='white'/>
+                          <Picker style={styles.st_rs} mode="dropdown" selectedValue={this.state.selectedRS} onValueChange={this.onValueRS.bind(this)}>
+                              <Item label="Pilih Rumah Sakit" value="key0" />
+                              {comboRumahSakit}
+                          </Picker>
                         </Item>
                   </Form>
 
@@ -125,6 +244,7 @@ class signupform extends Component {
 
   render() {
      const { navigate } = this.props.data;
+   
     return (
      <Content styles={styles.contentLogin}>
             <View style={styles.center}>
@@ -137,10 +257,10 @@ class signupform extends Component {
               <Button last  active={this.state.activeTab === 'Dokter'} onPress={() => this.onTabPress('Dokter')}><Text>Dokter</Text></Button>
             </Segment>
 
-            {this._renderCancel()}
+            {this._renderFormReg()}
         
 
-          	<Button block warning style={styles.footerBottom}>
+          	<Button block warning style={styles.footerBottom} onPress={() => this.handleRegister()}>
 	            <Text>Daftar</Text>
 	        </Button>
 
@@ -201,6 +321,11 @@ const styles = StyleSheet.create({
   },
     st_dokter: {
       marginHorizontal: 14,
+      width: 316,
+      color: 'white',
+  },
+    st_rs: {
+      marginHorizontal: -2,
       width: 316,
       color: 'white',
   },
