@@ -55,7 +55,7 @@ class loginform extends Component {
           
           <Form style={styles.formLogin}>
             <Item>
-              <Input style={styles.st_inputfnt} placeholder='Username' placeholderTextColor='white' onChangeText={(text) => this.setState({username:text})}/>
+              <Input style={styles.st_inputfnt} placeholder='Nama Awal' placeholderTextColor='white' onChangeText={(text) => this.setState({username:text})}/>
             </Item>
             <Item>
               <Input style={styles.st_inputfnt} placeholder='Password' placeholderTextColor='white' secureTextEntry={true} onChangeText={(text) => this.setState({password:text})}/>
