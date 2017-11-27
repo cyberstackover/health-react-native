@@ -47,7 +47,7 @@ class loginform extends Component {
   render() {
     const { navigate } = this.props.data;
     return (
-    	<Content style={styles.contentLogin}>
+      <Content style={styles.contentLogin}>
             <View style={styles.center}>
                   <Thumbnail square large source={require('../../Images/logo.png')} style={styles.images}/>
                     <Text style={styles.font1}>Spine Surgery Injury Severity (SSIS)</Text>
@@ -61,9 +61,9 @@ class loginform extends Component {
               <Input style={styles.st_inputfnt} placeholder='Password' placeholderTextColor='white' secureTextEntry={true} onChangeText={(text) => this.setState({password:text})}/>
             </Item>
           </Form>
-          	<Button block warning style={styles.footerBottom} onPress={() => this.handleClick()}>
-	            <Text>Sign In</Text>
-	        </Button>
+            <Button block warning style={styles.footerBottom} onPress={() => this.handleClick()}>
+              <Text>Sign In</Text>
+          </Button>
 
 
          <View style={styles.footerBottomSignUp}>
@@ -80,12 +80,12 @@ class loginform extends Component {
 }
 
 const styles = StyleSheet.create({
-	footerBottom:{
-		marginTop: 26,
-		paddingTop: 10,
-		marginLeft: 16,
-		marginRight: 16,
-	},
+  footerBottom:{
+    marginTop: 26,
+    paddingTop: 10,
+    marginLeft: 16,
+    marginRight: 16,
+  },
   formLogin : {
     marginTop :30,
     paddingLeft : 10,

@@ -16,7 +16,7 @@ class signup extends Component {
   	
     return (
 	<View style={styles.container}>
-    <Image source={require('../../Images/Bg.png')} style={styles.bgimage}/>
+    <Image source={require('../../Images/Bg.jpg')} style={styles.bgimage}/>
         <View style={styles.loginForm}>
             <SignUp data={this.props.navigation}/>
         </View>

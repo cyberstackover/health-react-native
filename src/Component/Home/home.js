@@ -21,7 +21,7 @@ export default class home extends Component {
   	const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Image source={require('../../Images/Bg.png')} style={styles.bgimage}/>
+        <Image source={require('../../Images/Bg.jpg')} style={styles.bgimage}/>
       	<Text>{'\n\n'}</Text>
       	<Thumbnail square large source={require('../../Images/logo.png')}/>
       	<Text style={styles.font}> Spine Surgery Injury Severity (SSIS)</Text>
@@ -41,7 +41,9 @@ export default class home extends Component {
       	<Text style={styles.font}> kerahasiaanya.</Text>
       	<Content>
       		<Text>{'\n'}</Text>
-      		<Button large light onPress={() => navigate('Login')}><Text>MULAI</Text></Button>
+      		<Button block info style={styles.st_button} onPress={() => navigate('Login')}>
+          <Text style={styles.st_text}>MULAI</Text>
+          </Button>
       	</Content>
       </View>
     );
@@ -65,6 +67,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute', 
+    },
+    st_button:{
+      width: 200,
+      height: 50,
+      borderRadius: 20,
+    },
+    st_text:{
+      fontSize: 25,
     }
     });
 
