@@ -76,10 +76,6 @@ const styles = StyleSheet.create({
     },
     st_form:{
     	flex: 1,
-    	flexDirection: 'row',  
-    },
-    st_form:{
-    	flex: 1,
     	flexDirection: 'row',
     	justifyContent: 'flex-end',  
     },
