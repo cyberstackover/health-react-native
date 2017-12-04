@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 import { Container,
@@ -33,7 +34,7 @@ class beranda extends Component {
 		    	</Button>
 		    	  <Title style={styles.st_title1}> MENU </Title>
             <Title style={styles.st_title2}> DOKTER </Title>
-              <Button block info style={styles.st_button}>
+              <Button block info style={styles.st_button} onPress={() => navigate('Skor')}>
                 <Text style={styles.st_title4}>SSIS Skor</Text>
               </Button>
               <Button block info style={styles.st_button} onPress={() => navigate('Pasien')}>

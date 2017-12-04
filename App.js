@@ -6,6 +6,7 @@ import RegistrasiScreen from './src/Component/Registrasi/signup';
 import BerandaScreen from './src/Component/Beranda/beranda';
 import PasienScreen from './src/Component/Pasien/pasien';
 import ProfilScreen from './src/Component/Profil/profil';
+import SkorScreen from './src/Component/Skor/skor';
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 const Dr_Beranda = DrawerNavigator({
@@ -41,6 +42,9 @@ const App = StackNavigator({
   },
   Profil:{
     screen: ProfilScreen,  
+  },
+  Skor : {
+    screen : SkorScreen,
   }
 },
   {
