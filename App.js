@@ -10,7 +10,6 @@ import ProfilScreen from './src/Component/Profil/profil';
 import TentangScreen from './src/Component/Tentang/tentang';
 import SkorScreen from './src/Component/Skor/skor' ;
 
-
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 const Dr_Beranda = DrawerNavigator({
@@ -59,7 +58,6 @@ const App = StackNavigator({
   Skor:{
     screen: SkorScreen,
   },
-
 },
   {
   headerMode: 'none',

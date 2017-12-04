@@ -169,8 +169,8 @@ class skor extends Component {
                 <Container>
                   <Image source={require('../../Images/Bg.jpg')} style={styles.bgimage}/>
                   <Content style={styles.st_header}>
-                      <Title style={styles.st_title1}> Pertanyaan </Title>
-                   		{this._renderQuestion()}
+                  <Title style={styles.st_title1}> Pertanyaan </Title>
+                   	{this._renderQuestion()}
                  </Content>
                 </Container>
             );

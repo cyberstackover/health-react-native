@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 import { Container,
