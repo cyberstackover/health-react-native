@@ -10,10 +10,13 @@ import {
 } from 'react-native';
 
 import { Container,
-		 Content, 
+		     Content, 
          Header,
          Text,
+         Card,
+         CardItem,
          Button,
+         Body,
          Icon,
          Title,
        } from 'native-base';
@@ -26,6 +29,7 @@ class skor extends Component {
           totalQ : 0,
           now : 1,
           token : '',
+          rekom : [],
           ganti : 0,
           selesai : 0,
           score : 0,
@@ -98,10 +102,12 @@ class skor extends Component {
                     })
                     .then((response) => response.json())
                     .then((response) => {
-                        this.state.score = response.nilai.nilai;
+                        this.state.score = response.nilai;
+                        this.state.rekom = response.rekomendasi;
+                        this.state.derajat = response.derajat.keterangan
                         this.setState({
-			            	ganti: 1
-			          	});
+      			            	ganti: 1
+      			          	});
 			          	this.setState({
 			            	selesai: 1
 			          	});
@@ -122,7 +128,13 @@ class skor extends Component {
     	if (this.state.ganti == 1) {
     		  let total = this.state.totalQ;
 		      let now = this.state.now;
+          let drjt = this.state.derajat;
 		      let questionNow = this.state.data[now-1].nama;
+          let allrek = this.state.rekom.map((data, index) => {
+                    return (
+                          <Text key={index} style={styles.st_title4}>{index+1}. {data}</Text>
+                      )  
+                });
 		      let allAnswer = this.state.data[now-1].grading.map((data, index) => {
 		                return (
 		                		 <Button key={index} block info style={styles.st_button} onPress={() => this.questionAct(data.id)}>
@@ -133,10 +145,29 @@ class skor extends Component {
 		    if (this.state.selesai == 1) {
     			let score = this.state.score;
 	    		   return(
-			      		 <View style={styles.st_answer}>
+			      		     <View style={styles.st_answer}>
 		                      <Title style={styles.st_title3}>YOUR SCORE</Title>
 		                      <Title style={styles.st_titleQ}>{score}</Title>
-		                    </View>
+                           <Content>
+                          <Card>
+                            <CardItem>
+                              <Body>
+                                <Text style={styles.st_title4}>
+                                   {drjt}
+                                </Text>
+                              </Body>
+                            </CardItem>
+                            <CardItem>
+                              <Body>
+                                <Text style={styles.st_title4}>
+                                   {allrek}
+                                </Text>
+                              </Body>
+                            </CardItem>
+                          </Card>
+                        </Content>
+		                  </View>
+                       
 			      	);
     		}else{
     			return(

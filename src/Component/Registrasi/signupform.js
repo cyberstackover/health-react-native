@@ -210,7 +210,7 @@ class signupform extends Component {
         } else {
                let comboRumahSakit = this.state.rs.map(function(data, index){
                         return (
-                             <Item key={index} label={data.nama} value={data.id} />
+                             <Item key={index} label={data.nama} value={data.id_rumahsakit} />
                       )
                   
                   });
