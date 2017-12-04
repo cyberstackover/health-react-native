@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  AsyncStorage,
   TouchableOpacity
 } from 'react-native';
 import { Container, Header, Content, Item, Input, Form, Thumbnail, Label, Button, Text} from 'native-base';
@@ -19,7 +18,7 @@ class loginform extends Component {
     }
   }
 
-    handleClick(navigate){
+    handleClick(){
       fetch('http://dev.infinite-creative.com/sispak_api/Auth/token', {
        method: 'POST',
        headers: {
@@ -36,8 +35,7 @@ class loginform extends Component {
         .then((response) => {
                 
                 if (response.token != undefined) {
-                   AsyncStorage.setItem('tokenUser', response.token);
-                   navigate('Beranda');
+                   alert("Berhasil login");
                 }else{
                   alert("Gagal Login");
                 }
@@ -63,7 +61,7 @@ class loginform extends Component {
               <Input style={styles.st_inputfnt} placeholder='Password' placeholderTextColor='white' secureTextEntry={true} onChangeText={(text) => this.setState({password:text})}/>
             </Item>
           </Form>
-            <Button block warning style={styles.footerBottom} onPress={() => this.handleClick(navigate)}>
+            <Button block warning style={styles.footerBottom} onPress={() => this.handleClick()}>
               <Text>Sign In</Text>
           </Button>
 
