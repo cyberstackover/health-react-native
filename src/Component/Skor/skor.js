@@ -199,12 +199,9 @@ class skor extends Component {
             return (
                 <Container>
                   <Image source={require('../../Images/Bg.jpg')} style={styles.bgimage}/>
-                  <Content>
-                    <Button transparent style={styles.st_header} onPress={() => this.props.navigation.navigate('DrawerOpen')}>
-                      <Icon ios='ios-menu' android="md-menu" style={styles.st_size} />
-                    </Button>
-                      <Title style={styles.st_title1}> Pertanyaan </Title>
-                   		{this._renderQuestion()}
+                  <Content style={styles.st_header}>
+                  <Title style={styles.st_title1}> Pertanyaan </Title>
+                   	{this._renderQuestion()}
                  </Content>
                 </Container>
             );
@@ -225,7 +222,7 @@ const styles = StyleSheet.create({
       position: 'absolute', 
     },
     st_header:{
-    	marginTop: 15,
+    	marginTop: 25,
     },
     st_size:{
     	fontSize: 30,

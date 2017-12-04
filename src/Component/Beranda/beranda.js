@@ -37,13 +37,13 @@ class beranda extends Component {
               <Button block info style={styles.st_button} onPress={() => navigate('Skor')}>
                 <Text style={styles.st_title4}>SSIS Skor</Text>
               </Button>
-              <Button block info style={styles.st_button} onPress={() => navigate('Pasien')}>
-                <Text style={styles.st_title4}>Pasien</Text>
+              <Button block info style={styles.st_button} onPress={() => navigate('Data')}>
+                <Text style={styles.st_title4}>Data</Text>
               </Button>
               <Button block info style={styles.st_button} onPress={() => navigate('Profil')}>
                 <Text style={styles.st_title4}>Profil</Text>
               </Button>
-              <Button block info style={styles.st_button}>
+              <Button block info style={styles.st_button} onPress={() => navigate('Tentang')}>
                 <Text style={styles.st_title4}>Tentang Profil</Text>
               </Button>
               <Button block info style={styles.st_button}>

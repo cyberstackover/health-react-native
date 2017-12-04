@@ -5,20 +5,26 @@ import LoginScreen from './src/Component/Login/login';
 import RegistrasiScreen from './src/Component/Registrasi/signup';
 import BerandaScreen from './src/Component/Beranda/beranda';
 import PasienScreen from './src/Component/Pasien/pasien';
+import InputScreen from './src/Component/Pasien/inputData';
 import ProfilScreen from './src/Component/Profil/profil';
-import SkorScreen from './src/Component/Skor/skor';
+import TentangScreen from './src/Component/Tentang/tentang';
+import SkorScreen from './src/Component/Skor/skor' ;
+
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 const Dr_Beranda = DrawerNavigator({
     Beranda:{
       screen: BerandaScreen,
   },
-    Pasien:{
+    Data:{
       screen: PasienScreen,
   },
     Profil:{
       screen: ProfilScreen,
-    }
+  },
+    Tentang:{
+      screen: TentangScreen,
+  }
 },
 {
     drawerWidth: 240,
@@ -34,7 +40,7 @@ const App = StackNavigator({
   Daftar:{
       screen: RegistrasiScreen,
   },
-  Pasien:{
+  Data:{
       screen: PasienScreen,
   },
   Beranda:{
@@ -43,9 +49,15 @@ const App = StackNavigator({
   Profil:{
     screen: ProfilScreen,  
   },
-  Skor : {
-    screen : SkorScreen,
-  }
+  Tentang:{
+    screen: TentangScreen,
+  },
+  Input:{
+    screen: InputScreen,
+  },
+  Skor:{
+    screen: SkorScreen,
+  },
 },
   {
   headerMode: 'none',

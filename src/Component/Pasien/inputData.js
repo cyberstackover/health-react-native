@@ -20,41 +20,24 @@ import { Container,
          Right
        } from 'native-base';
 
-class pasien extends Component {
+class inputData extends Component {
   render() {
      const { navigate } = this.props.navigation;
     return (
     	<Container>
     		<Image source={require('../../Images/Bg.jpg')} style={styles.bgimage}/>
-	    	<Content>
-		    	<Button transparent style={styles.st_header} onPress={() => this.props.navigation.navigate('DrawerOpen')}>
-		    		<Icon ios='ios-menu' android="md-menu" style={styles.st_size} />
-		    	</Button>
-		    	  <Title style={styles.st_title1}> PASIEN </Title>
+	    	<Content style={styles.st_header}>
+		    	  <Title style={styles.st_title1}> Input Data </Title>
+            <Title> Dik Ricky </Title>
             <Card style={styles.st_card1}>
               <CardItem>
-                <Text>Dik Ricky</Text>
-                <Right>
-                  <Button transparent onPress={() => navigate('Input')}>
-                    <Icon name="md-menu" />
-                  </Button>
-                </Right>
+                <Text>1 Maret 2017</Text>
               </CardItem>
               <CardItem>
-                <Text>Dik Dimas</Text>
-                <Right>
-                  <Button transparent onPress={() => navigate('Input')}>
-                    <Icon name="md-menu" />
-                  </Button>
-                </Right>
+                <Text>16 Juni 2016</Text>
               </CardItem>
               <CardItem>
-                <Text>Dik Sonif</Text>
-                <Right>
-                  <Button transparent onPress={() => navigate('Input')}>
-                    <Icon name="md-menu" />
-                  </Button>
-                </Right>
+                <Text>28 Juli 2017</Text>
               </CardItem>
             </Card>
         </Content>
@@ -72,7 +55,7 @@ const styles = StyleSheet.create({
       position: 'absolute', 
     },
     st_header:{
-    	marginTop: 15,
+    	marginTop: 20,
     },
     st_size:{
     	fontSize: 30,
@@ -96,4 +79,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default pasien;
+export default inputData;

@@ -30,16 +30,32 @@ class profil extends Component {
 		    		<Icon ios='ios-menu' android="md-menu" style={styles.st_size} />
 		    	</Button>
 		    	  <Title style={styles.st_title1}> PROFIL </Title>
-		    	 <List>
-		    	 	<View style={styles.st_form}>
-			    	 	<ListItem style={styles.st_card}>
-				     		<Text style={styles.st_title4}>Nama</Text>
-				     	</ListItem>
-			    	 	<ListItem style={styles.st_card}>
-				     		<Text style={styles.st_title4}>Nama</Text>
-				     	</ListItem>
-				    </View>	
-			     </List>
+            <List>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Nama</Text>
+              </ListItem>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Username</Text>
+              </ListItem>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Email</Text>
+              </ListItem>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Password</Text>
+              </ListItem>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Rumah Sakit</Text>
+              </ListItem>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Alamat Rumah Sakit</Text>
+              </ListItem>
+              <ListItem style={styles.st_item}>
+                <Text style={styles.st_text}>Telp Rumah Sakit</Text>
+              </ListItem>
+              <Button block info style={styles.st_button}>
+                <Text style={styles.st_text}>SIMPAN</Text>
+              </Button>
+            </List>
                <Text style={styles.st_title3}>Spine Surgery Injury Severity (SSIS)</Text>
             </Content>
     	</Container>
@@ -72,12 +88,12 @@ const styles = StyleSheet.create({
       fontSize: 17,
       marginLeft: 40,
       marginRight: 40,
-      marginTop: 30,
+      marginTop: 25,
     },
     st_form:{
     	flex: 1,
     	flexDirection: 'row',
-    	justifyContent: 'flex-end',  
+    	justifyContent: 'center',  
     },
     st_card:{
     	backgroundColor: '#FFFFFF50',
@@ -93,6 +109,16 @@ const styles = StyleSheet.create({
     },
     st_title4:{
       fontSize: 15,
+      color: '#ffffff',
+      paddingLeft: 10,
+    },
+    st_item:{
+      marginRight: 18,
+      marginTop: 8,
+      backgroundColor: '#FFFFFF50',
+
+    },
+    st_text:{
       color: '#ffffff',
       paddingLeft: 10,
     }
