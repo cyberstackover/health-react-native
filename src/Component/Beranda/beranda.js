@@ -23,6 +23,13 @@ import { Container,
        } from 'native-base';
 
 class beranda extends Component {
+
+    _handleLogOut = (navigate) => {
+    AsyncStorage.removeItem('tokenUser');
+    alert('You have been logged out.');
+    navigate('Login');
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -44,9 +51,9 @@ class beranda extends Component {
                 <Text style={styles.st_title4}>Profil</Text>
               </Button>
               <Button block info style={styles.st_button} onPress={() => navigate('Tentang')}>
-                <Text style={styles.st_title4}>Tentang Profil</Text>
+                <Text style={styles.st_title4}>SSIS</Text>
               </Button>
-              <Button block info style={styles.st_button}>
+              <Button block info style={styles.st_button} onPress={() => this._handleLogOut(navigate)}>
                 <Text style={styles.st_title4}>Sign Out</Text>
               </Button>
 	    	</Content>

@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     font:{
     	fontSize: 18,
     	color: 'white',
+      backgroundColor: 'transparent',
     	fontFamily: 'Cochin',
     },
     bgimage:{

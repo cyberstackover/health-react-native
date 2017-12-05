@@ -62,7 +62,11 @@ const App = StackNavigator({
   {
   headerMode: 'none',
   navigationOptions:{ 
-    header:{ visible:false }
+    header:{ 
+      visible: false,
+      left: null,
+    },
+    gesturesEnabled: false,
   },
 });
 
