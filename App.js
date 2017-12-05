@@ -9,6 +9,7 @@ import InputScreen from './src/Component/Pasien/inputData';
 import ProfilScreen from './src/Component/Profil/profil';
 import TentangScreen from './src/Component/Tentang/tentang';
 import SkorScreen from './src/Component/Skor/skor' ;
+import DetailScreen from './src/Component/Pasien/detail';
 
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
@@ -54,6 +55,9 @@ const App = StackNavigator({
   },
   Input:{
     screen: InputScreen,
+  },
+  Detail:{
+    screen: DetailScreen,
   },
   Skor:{
     screen: SkorScreen,

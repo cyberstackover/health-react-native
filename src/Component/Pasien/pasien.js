@@ -15,6 +15,9 @@ import { Container,
          Button,
          Icon,
          Title,
+         Left,
+         Thumbnail,
+         Body,
          Card,
          CardItem,
          Right
@@ -33,28 +36,30 @@ class pasien extends Component {
 		    	  <Title style={styles.st_title1}> PASIEN </Title>
             <Card style={styles.st_card1}>
               <CardItem>
-                <Text>Dik Ricky</Text>
-                <Right>
-                  <Button transparent onPress={() => navigate('Input')}>
-                    <Icon name="md-menu" />
-                  </Button>
-                </Right>
+                  <Left>
+                    <Thumbnail source={{uri: 'https://cdn.pixabay.com/photo/2017/03/31/08/32/beauty-2190682_640.jpg'}} />
+                    <Body>
+                      <Text style={styles.right}>Catherine</Text>
+                      <Text note style={styles.right}>April 15, 2016</Text>
+                    </Body>
+                  </Left>
+                   <Right >
+                    <Icon name="arrow-forward" onPress={() => navigate('Input')}/>
+                  </Right>
               </CardItem>
-              <CardItem>
-                <Text>Dik Dimas</Text>
-                <Right>
-                  <Button transparent onPress={() => navigate('Input')}>
-                    <Icon name="md-menu" />
-                  </Button>
-                </Right>
-              </CardItem>
-              <CardItem>
-                <Text>Dik Sonif</Text>
-                <Right>
-                  <Button transparent onPress={() => navigate('Input')}>
-                    <Icon name="md-menu" />
-                  </Button>
-                </Right>
+            </Card>
+            <Card style={styles.st_card1}>
+              <CardItem >
+                  <Left>
+                    <Thumbnail source={{uri: 'https://cdn.pixabay.com/photo/2017/09/25/13/12/man-2785071_640.jpg'}} />
+                    <Body>
+                      <Text style={styles.right}>Simon Robben</Text>
+                      <Text note style={styles.right}>April 15, 2018</Text>
+                    </Body>
+                  </Left>
+                   <Right>
+                    <Icon name="arrow-forward" onPress={() => navigate('Input')}/>
+                  </Right>
               </CardItem>
             </Card>
         </Content>
@@ -82,6 +87,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       fontSize: 20,
       fontWeight: '400', 
+      marginBottom: 20,
     },
     st_title3:{
       color: '#ffffff', 
@@ -90,9 +96,13 @@ const styles = StyleSheet.create({
       marginRight: 40,
     },
     st_card1:{
-      marginTop: 20,
+      flex : 0,
+      marginTop: 0,
       marginLeft: 15,
       marginRight: 15,
+    },
+    right : {
+      width:100,
     }
 });
 

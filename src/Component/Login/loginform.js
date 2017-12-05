@@ -37,6 +37,7 @@ class loginform extends Component {
                 
                 if (response.token != undefined) {
                    AsyncStorage.setItem('tokenUser', response.token);
+                   AsyncStorage.setItem('statusUser', response.status);
                    navigate('Beranda');
                 }else{
                   alert("Gagal Login");
